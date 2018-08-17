@@ -86,18 +86,34 @@ class FindPath(object):
     
 if __name__ == '__main__':
     
-    nodes = ['Pouso Alegre','Santa Rita','Varginha','Congonhal',
-             'Cachoeira de Minas','Itajuba','Belo Horizonte','Congonhal',
-             'Ouro Fino']
+    #nodes = ['Pouso Alegre','Santa Rita','Varginha','Congonhal',
+    #         'Cachoeira de Minas','Itajuba','Belo Horizonte','Congonhal',
+    #         'Ouro Fino']
 
-    edges=[('Pouso Alegre','Santa Rita'),('Pouso Alegre','Varginha'),('Pouso Alegre','Congonhal'),('Pouso Alegre','Cachoeira de Minas'),
-           ('Santa Rita','Pouso Alegre'),('Santa Rita','Itajuba'),('Santa Rita','Cachoeira de Minas'),
-           ('Itajuba','Santa Rita'),
-           ('Varginha','Belo Horizonte'),('Varginha','Pouso Alegre'),
-           ('Cachoeira de Minas','Santa Rita'),('Cachoeira de Minas','Pouso Alegre'),
-           ('Congonhal','Pouso Alegre'),('Congonhal','Ouro Fino'),
-           ('Belo Horizonte','Varginha'),('Ouro Fino','Congonhal')]
+    #edges=[('Pouso Alegre','Santa Rita'),('Pouso Alegre','Varginha'),('Pouso Alegre','Congonhal'),('Pouso Alegre','Cachoeira de Minas'),
+    #       ('Santa Rita','Pouso Alegre'),('Santa Rita','Itajuba'),('Santa Rita','Cachoeira de Minas'),
+    #       ('Itajuba','Santa Rita'),
+    #       ('Varginha','Belo Horizonte'),('Varginha','Pouso Alegre'),
+    #       ('Cachoeira de Minas','Santa Rita'),('Cachoeira de Minas','Pouso Alegre'),
+    #       ('Congonhal','Pouso Alegre'),('Congonhal','Ouro Fino'),
+    #       ('Belo Horizonte','Varginha'),('Ouro Fino','Congonhal')]
     
+    nodes = ['S. R. Sapucaí', 'Pouso Alegre', 'Cambuí', 'Congonhal', 'Camanducaia', 'Borda da Mata',
+        'Ipuiúna', 'Bragança Paulista', 'Jacutinga', 'Andradas', 'Atibaia', 'Itapira',
+        'Esp. Santo Pinhal', 'Mogi-Guaçu', 'Mogi Mirim', 'Campinas', 'Paulínia', 'São Paulo', 'Jundiaí']
+
+    edges = [('S. R. Sapucaí', 'Pouso Alegre'), 
+
+            ('Pouso Alegre', 'Cambuí'), ('Cambuí', 'Camanducaia'), ('Camanducaia', 'Bragança Paulista'),
+            ('Bragança Paulista', 'Atibaia'), ('Atibaia', 'Campinas'), 
+            ('Campinas', 'Jundiaí'), ('Jundiaí', 'São Paulo'),
+
+            ('Pouso Alegre', 'Borda da Mata'), ('Borda da Mata', 'Jacutinga'), ('Jacutinga', 'Itapira'),
+            ('Itapira', 'Campinas'), ('Campinas', 'Paulínia'),
+
+            ('Pouso Alegre', 'Congonhal'), ('Congonhal', 'Ipuiúna'), ('Ipuiúna', 'Andradas'), ('Andradas', 'Esp. Santo Pinhal'),
+            ('Esp. Santo Pinhal', 'Mogi-Guaçu'), ('Mogi-Guaçu', 'Mogi Mirim'), ('Mogi Mirim', 'Campinas'),
+        ]
   
     G=nx.DiGraph()
     
@@ -121,8 +137,8 @@ if __name__ == '__main__':
     SearchObj = breadth_first_search(Problema)    
     
     
-    start = 'Pouso Alegre'
-    target = 'Belo Horizonte'
+    start = 'S. R. Sapucaí'
+    target = 'São Paulo'
     print('\nSearching %s starting from %s...'%(target,start))
     solution,path,path_edges = SearchObj.search(start,target)
     print('Done!\n')
@@ -141,8 +157,8 @@ if __name__ == '__main__':
     for u,v in edges:
         G.add_weighted_edges_from([(u,v,CostperEdge[edges.index((u,v))])])
             
-    start = 'Belo Horizonte'
-    target = 'Itajuba'
+    start = 'S. R. Sapucaí'
+    target = 'Jundiaí'
     print('\nSearching %s starting from %s...'%(target,start))
     solution,path,path_edges = SearchObj.search(start,target)
     print('Done!\n')
@@ -157,21 +173,21 @@ if __name__ == '__main__':
         print('Path not found!')  
     
     #Adding the respective cost for each edge in the graph
-    for u,v in edges:
-        G.add_weighted_edges_from([(u,v,CostperEdge[edges.index((u,v))])])    
-    start = 'Ouro Fino'
-    target = 'Campinas'
-    print('\nSearching %s starting from %s...'%(target,start))
-    solution,path,path_edges = SearchObj.search(start,target)
-    print('Done!\n')
-    if solution:
-        print('Path found!')
-        printPath(path,start)
-        for u,v in edges:
-            print(u,v)
-            if (u,v) not in path_edges:
-                G.remove_edge(u, v)
-        plotGraph(G, 1, positions)        
-    else:
-        print('Path not found!') 
+    # for u,v in edges:
+    #     G.add_weighted_edges_from([(u,v,CostperEdge[edges.index((u,v))])])    
+    # start = 'Ouro Fino'
+    # target = 'Campinas'
+    # print('\nSearching %s starting from %s...'%(target,start))
+    # solution,path,path_edges = SearchObj.search(start,target)
+    # print('Done!\n')
+    # if solution:
+    #     print('Path found!')
+    #     printPath(path,start)
+    #     for u,v in edges:
+    #         print(u,v)
+    #         if (u,v) not in path_edges:
+    #             G.remove_edge(u, v)
+    #     plotGraph(G, 1, positions)        
+    # else:
+    #     print('Path not found!') 
     
