@@ -9,3 +9,6 @@
 4. A função `ExpandSolution` retorna uma lista com os sucessores de Pouso Alegre, que no caso são: Cambuí, Borda da Mata e Congonhal.
 
 5. 
+- [S. R. Sapucaí - Jundiaí](https://github.com/mugbug/search-algorithms/blob/master/EPCs/EPC1/Santa%20RIta%20do%20Sapuca%C3%AD%20-%20Jundia%C3%AD.png)
+- [S. R. Sapucaí - Paulínia](https://github.com/mugbug/search-algorithms/blob/master/EPCs/EPC1/Santa%20Rita%20do%20Sapuca%C3%AD%20-%20Paul%C3%ADnia.png)
+- [S. R. Sapucaí - São Paulo](https://github.com/mugbug/search-algorithms/blob/master/EPCs/EPC1/Santa%20Rita%20do%20Sapuca%C3%AD%20-%20S%C3%A3o%20Paulo.png)
