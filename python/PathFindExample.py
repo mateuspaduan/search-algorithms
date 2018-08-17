@@ -100,16 +100,15 @@ if __name__ == '__main__':
     
     nodes = ['S. R. Sapucaí', 'Pouso Alegre', 'Cambuí', 'Congonhal', 'Camanducaia', 'Borda da Mata',
         'Ipuiúna', 'Bragança Paulista', 'Jacutinga', 'Andradas', 'Atibaia', 'Itapira',
-        'Esp. Santo Pinhal', 'Mogi-Guaçu', 'Mogi Mirim', 'Campinas', 'Paulínia', 'São Paulo', 'Jundiaí']
+        'Esp. Santo Pinhal', 'Mogi-Guaçu', 'Mogi Mirim', 'Campinas']
 
     edges = [('S. R. Sapucaí', 'Pouso Alegre'), 
 
             ('Pouso Alegre', 'Cambuí'), ('Cambuí', 'Camanducaia'), ('Camanducaia', 'Bragança Paulista'),
-            ('Bragança Paulista', 'Atibaia'), ('Atibaia', 'Campinas'), 
-            ('Campinas', 'Jundiaí'), ('Jundiaí', 'São Paulo'),
+            ('Bragança Paulista', 'Atibaia'), ('Atibaia', 'Campinas'),
 
             ('Pouso Alegre', 'Borda da Mata'), ('Borda da Mata', 'Jacutinga'), ('Jacutinga', 'Itapira'),
-            ('Itapira', 'Campinas'), ('Campinas', 'Paulínia'),
+            ('Itapira', 'Campinas'),
 
             ('Pouso Alegre', 'Congonhal'), ('Congonhal', 'Ipuiúna'), ('Ipuiúna', 'Andradas'), ('Andradas', 'Esp. Santo Pinhal'),
             ('Esp. Santo Pinhal', 'Mogi-Guaçu'), ('Mogi-Guaçu', 'Mogi Mirim'), ('Mogi Mirim', 'Campinas'),
@@ -138,7 +137,7 @@ if __name__ == '__main__':
     
     
     start = 'S. R. Sapucaí'
-    target = 'São Paulo'
+    target = 'Campinas'
     print('\nSearching %s starting from %s...'%(target,start))
     solution,path,path_edges = SearchObj.search(start,target)
     print('Done!\n')
