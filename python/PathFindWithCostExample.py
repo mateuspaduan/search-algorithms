@@ -96,22 +96,22 @@ class FindPath(object):
         """Returns heuristic associated to ``current`` 
         """
         custo_linha_reta = {
-            'S. R. Sapucaí': 165,
-            'Pouso Alegre': 137,
-            'Cambuí': 108,
-            'Congonhal': 135,
-            'Camanducaia': 97,
-            'Borda da Mata': 117,
-            'Ipuiúna': 139,
-            'Bragança Paulista': 54,
-            'Jacutinga': 84,
-            'Andradas': 106,
-            'Atibaia': 57,
-            'Itapira': 58,
-            'Esp. Santo Pinhal': 86,
-            'Mogi-Guaçu': 62,
-            'Mogi Mirim': 54,
-            'Campinas': 0,
+            ('S. R. Sapucaí', 'Campinas'): 165,
+            ('Pouso Alegre', 'Campinas'): 137,
+            ('Cambuí': 108,
+            ('Congonhal': 135,
+            ('Camanducaia': 97,
+            ('Borda da Mata', 'Campinas'): 117,
+            ('Bragança Paulista', 'Campinas'): 54,
+            ('Ipuiúna', 'Campinas'): 139,
+            ('Jacutinga', 'Campinas'): 84,
+            ('Andradas', 'Campinas'): 106,
+            ('Atibaia', 'Campinas'): 57,
+            ('Itapira', 'Campinas'): 58,
+            ('Esp. Santo Pinhal', 'Campinas'): 86,
+            ('Mogi-Guaçu', 'Campinas'): 62,
+            ('Mogi Mirim', 'Campinas'): 54,
+            ('Campinas', 'Campinas'): 0,
         }
 
         Heuristic = custo_linha_reta.get((current, target))
