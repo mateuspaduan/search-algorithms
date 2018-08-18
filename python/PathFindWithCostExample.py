@@ -12,14 +12,16 @@ try:
 except:
     raise
 
-def printPath(path,start):
-    string=(start)
+
+def printPath(path, start):
+    string = (start)
     for city in path:
         if city != start:
-            string=(string+' -> '+city)
+            string = (string+' -> '+city)
     print(string)
-    
-def plotGraph(G,option,position=None):
+
+
+def plotGraph(G, option, position=None):
     """Plot a graph G with specific position.
 
     Parameters
@@ -27,41 +29,46 @@ def plotGraph(G,option,position=None):
     G : NetworkX graph
     option : if 1, edges with weight greater then 0 are enlarged. The opposite happens for option equal to 0.
     position : nodes position 
-    
+
     Returns
     -------
     position: nodes position generated during plot (or same positions if supplied).
 
     """
     if option == 1:
-        elarge=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] > 0]
-        esmall=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] <= 0]
+        elarge = [(u, v)
+                  for (u, v, d) in G.edges(data=True) if d['weight'] > 0]
+        esmall = [(u, v)
+                  for (u, v, d) in G.edges(data=True) if d['weight'] <= 0]
     else:
-        elarge=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] <= 0]
-        esmall=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] > 0]
-        
-    
+        elarge = [(u, v)
+                  for (u, v, d) in G.edges(data=True) if d['weight'] <= 0]
+        esmall = [(u, v)
+                  for (u, v, d) in G.edges(data=True) if d['weight'] > 0]
+
     if position == None:
-        position=nx.spring_layout(G) # positions for all nodes
-    
+        position = nx.spring_layout(G)  # positions for all nodes
+
     # nodes
-    nx.draw_networkx_nodes(G,position,node_size=500)
-        
+    nx.draw_networkx_nodes(G, position, node_size=500)
+
     # edges
-    nx.draw_networkx_edges(G,position,edgelist=elarge,width=2)
-    nx.draw_networkx_edges(G,position,edgelist=esmall,width=2,alpha=0.5,edge_color='b',style='dashed')
-    
+    nx.draw_networkx_edges(G, position, edgelist=elarge, width=2)
+    nx.draw_networkx_edges(G, position, edgelist=esmall,
+                           width=2, alpha=0.5, edge_color='b', style='dashed')
+
     # labels
-    nx.draw_networkx_labels(G,position,font_size=20,font_family='sans-serif')
-    
+    nx.draw_networkx_labels(G, position, font_size=20,
+                            font_family='sans-serif')
+
     plt.axis('off')
-    #plt.savefig("weighted_graph.png") # save as png
-    plt.show() # display
-    
+    # plt.savefig("weighted_graph.png") # save as png
+    plt.show()  # display
+
     return position
 
 
-class FindPath(object): 
+class FindPath(object):
     '''
     classdocs
     '''
@@ -71,99 +78,120 @@ class FindPath(object):
         Constructor
         '''
         self.problem = graph
-        
-    def ObjectiveTest(self,current,target): 
+
+    def ObjectiveTest(self, current, target):
         """Return ``True`` if ``current`` state corresponds to the ``target`` state 
-        """ 
-        solution = False 
+        """
+        solution = False
         if current == target:
             solution = True
-        return  solution
- 
-    def ExpandSolution(self,current): 
-        """Returns all possible states from ``current`` 
-        """ 
-        return  self.problem.neighbors(current)
-    
-    def Heuristic(self,target,current): 
-        """Returns heuristic associated to ``current`` 
-        """ 
-        custo_linha_reta={('Pouso Alegre','Belo Horizonte'):350,
-                      ('Santa Rita','Belo Horizonte'):380,
-                      ('Itajuba','Belo Horizonte'): 500,
-                      ('Cachoeira de Minas','Belo Horizonte'):400,
-                      ('Varginha','Belo Horizonte'):250,
-                      ('Congonhal','Belo Horizonte'):420,
-                      ('Ouro Fino','Belo Horizonte'):530,
-                      ('Belo Horizonte','Belo Horizonte'):0}
-        
-        Heuristic = custo_linha_reta.get((current, target))
-        print (Heuristic)                
-        return Heuristic
-    
-          
-    
-    
-if __name__ == '__main__':
-    
-    nodes = ['Pouso Alegre','Santa Rita','Varginha','Congonhal',
-             'Cachoeira de Minas','Itajuba','Belo Horizonte','Ouro Fino']
+        return solution
 
-    edges=[('Pouso Alegre','Santa Rita'),('Pouso Alegre','Varginha'),('Pouso Alegre','Congonhal'),('Pouso Alegre','Cachoeira de Minas'),
-           ('Santa Rita','Pouso Alegre'),('Santa Rita','Itajuba'),('Santa Rita','Cachoeira de Minas'),
-           ('Itajuba','Santa Rita'),
-           ('Varginha','Belo Horizonte'),('Varginha','Pouso Alegre'),
-           ('Cachoeira de Minas','Santa Rita'),('Cachoeira de Minas','Pouso Alegre'),
-           ('Congonhal','Pouso Alegre'),('Congonhal','Ouro Fino'),
-           ('Belo Horizonte','Varginha'),('Ouro Fino','Congonhal')]
-    
-    
-    cost={ ('Pouso Alegre','Santa Rita'):30,
-           ('Pouso Alegre','Varginha'):120,
-           ('Pouso Alegre','Congonhal'):35,
-           ('Pouso Alegre','Cachoeira de Minas'):40,
-           ('Santa Rita','Pouso Alegre'): 30,
-           ('Santa Rita','Itajuba'):50,
-           ('Santa Rita','Cachoeira de Minas'):45,
-           ('Itajuba','Santa Rita'):50,
-           ('Varginha','Belo Horizonte'):250,
-           ('Varginha','Pouso Alegre'):120,
-           ('Cachoeira de Minas','Santa Rita'):45,
-           ('Cachoeira de Minas','Pouso Alegre'):40,
-           ('Congonhal','Pouso Alegre'):35,
-           ('Congonhal','Ouro Fino'):22,
-           ('Belo Horizonte','Varginha'):250,
-           ('Ouro Fino','Congonhal'):22 }
-    
-    
-    
-    G=nx.DiGraph()
-    
+    def ExpandSolution(self, current):
+        """Returns all possible states from ``current`` 
+        """
+        return self.problem.neighbors(current)
+
+    def Heuristic(self, target, current):
+        """Returns heuristic associated to ``current`` 
+        """
+        custo_linha_reta = {
+            'S. R. Sapucaí': 165,
+            'Pouso Alegre': 137,
+            'Cambuí': 108,
+            'Congonhal': 135,
+            'Camanducaia': 97,
+            'Borda da Mata': 117,
+            'Ipuiúna': 139,
+            'Bragança Paulista': 54,
+            'Jacutinga': 84,
+            'Andradas': 106,
+            'Atibaia': 57,
+            'Itapira': 58,
+            'Esp. Santo Pinhal': 86,
+            'Mogi-Guaçu': 62,
+            'Mogi Mirim': 54,
+            'Campinas': 0,
+        }
+
+        Heuristic = custo_linha_reta.get((current, target))
+        print(Heuristic)
+        return Heuristic
+
+
+if __name__ == '__main__':
+
+    nodes = ['S. R. Sapucaí', 'Pouso Alegre', 'Cambuí', 'Congonhal', 'Camanducaia', 'Borda da Mata',
+             'Ipuiúna', 'Bragança Paulista', 'Jacutinga', 'Andradas', 'Atibaia', 'Itapira',
+             'Esp. Santo Pinhal', 'Mogi-Guaçu', 'Mogi Mirim', 'Campinas']
+
+    edges = [
+        ('S. R. Sapucaí', 'Pouso Alegre'),
+        ('Pouso Alegre', 'Cambuí'),
+        ('Cambuí', 'Camanducaia'),
+        ('Camanducaia', 'Bragança Paulista'),
+        ('Bragança Paulista', 'Atibaia'),
+        ('Atibaia', 'Campinas'),
+        ('Pouso Alegre', 'Borda da Mata'),
+        ('Borda da Mata', 'Jacutinga'),
+        ('Jacutinga', 'Itapira'),
+        ('Itapira', 'Campinas'),
+        ('Pouso Alegre', 'Congonhal'),
+        ('Congonhal', 'Ipuiúna'),
+        ('Ipuiúna', 'Andradas'),
+        ('Andradas', 'Esp. Santo Pinhal'),
+        ('Esp. Santo Pinhal', 'Mogi-Guaçu'),
+        ('Mogi-Guaçu', 'Mogi Mirim'),
+        ('Mogi Mirim', 'Campinas'),
+    ]
+
+    cost = {
+        ('S. R. Sapucaí', 'Pouso Alegre'): 28.5,
+        ('Pouso Alegre', 'Cambuí'): 49.1,
+        ('Cambuí', 'Camanducaia'): 24.7,
+        ('Camanducaia', 'Bragança Paulista'): 60.4,
+        ('Bragança Paulista', 'Atibaia'): 25.2,
+        ('Bragança Paulista', 'Itapira'): 82.4,
+        ('Atibaia', 'Campinas'): 65.6,
+        ('Itapira', 'Campinas'): 70.7,
+        ('Pouso Alegre', 'Borda da Mata'): 28.8,
+        ('Borda da Mata', 'Jacutinga'): 57.6,
+        ('Jacutinga', 'Itapira'): 33.2,
+        ('Pouso Alegre', 'Congonhal'): 24.3,
+        ('Congonhal', 'Ipuiúna'): 24.6,
+        ('Ipuiúna', 'Andradas'): 67.6,
+        ('Andradas', 'Esp. Santo Pinhal'): 28.4,
+        ('Esp. Santo Pinhal', 'Mogi-Guaçu'): 35.7,
+        ('Mogi-Guaçu', 'Mogi Mirim'): 25.0,
+        ('Mogi Mirim', 'Campinas'): 60.1,
+    }
+
+    G = nx.DiGraph()
+
     G.add_nodes_from(nodes)
-    
-    #Adding the respective cost for each edge in the graph
-    for u,v in edges:
-        G.add_edge(u, v, weight=cost[u,v])
+
+    # Adding the respective cost for each edge in the graph
+    for u, v in edges:
+        G.add_edge(u, v, weight=cost[u, v])
     positions = plotGraph(G, 1, None)
-            
-    #Creating an problem object based on FindPath class
+
+    # Creating an problem object based on FindPath class
     Problema = FindPath(G)
-    
-    #Creating an object for breadth first search algorithm for ``FindPath`` problem
-    SearchObj = greedy_search(Problema)    
-    
-    
-    start = 'Pouso Alegre'
-    target = 'Belo Horizonte'
-    print('\nSearching %s starting from %s...'%(target,start))
-    solution,path,path_edges = SearchObj.search(start,target)
+
+    # Creating an object for breadth first search algorithm for ``FindPath`` problem
+    SearchObj = greedy_search(Problema)
+
+    start = 'S. R. Sapucaí'
+    target = 'Campinas'
+    print('\nSearching %s starting from %s...' % (target, start))
+    solution, path, path_edges = SearchObj.search(start, target)
     print('Done!\n')
     if solution:
         print('Path found!')
-        printPath(path,start)
-        for u,v in edges:
-            if (u,v) not in path_edges:
+        printPath(path, start)
+        for u, v in edges:
+            if (u, v) not in path_edges:
                 G.remove_edge(u, v)
-        plotGraph(G, 1, positions)        
+        plotGraph(G, 1, positions)
     else:
-        print('Path not found!')        
+        print('Path not found!')
