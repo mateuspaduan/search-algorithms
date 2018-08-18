@@ -131,6 +131,7 @@ if __name__ == '__main__':
         ('Cambuí', 'Camanducaia'),
         ('Camanducaia', 'Bragança Paulista'),
         ('Bragança Paulista', 'Atibaia'),
+        ('Bragança Paulista', 'Itapira'),
         ('Atibaia', 'Campinas'),
         ('Pouso Alegre', 'Borda da Mata'),
         ('Borda da Mata', 'Jacutinga'),
