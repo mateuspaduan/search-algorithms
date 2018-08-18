@@ -98,9 +98,9 @@ class FindPath(object):
         custo_linha_reta = {
             ('S. R. Sapucaí', 'Campinas'): 165,
             ('Pouso Alegre', 'Campinas'): 137,
-            ('Cambuí': 108,
-            ('Congonhal': 135,
-            ('Camanducaia': 97,
+            ('Cambuí', 'Campinas'): 108,
+            ('Congonhal', 'Campinas'): 135,
+            ('Camanducaia', 'Campinas'): 97,
             ('Borda da Mata', 'Campinas'): 117,
             ('Bragança Paulista', 'Campinas'): 54,
             ('Ipuiúna', 'Campinas'): 139,
