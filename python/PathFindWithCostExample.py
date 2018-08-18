@@ -103,6 +103,7 @@ class FindPath(object):
             ('Camanducaia', 'Campinas'): 97,
             ('Borda da Mata', 'Campinas'): 117,
             ('Bragança Paulista', 'Campinas'): 54,
+            ('Bragança Paulista', 'Itapira'): ,
             ('Ipuiúna', 'Campinas'): 139,
             ('Jacutinga', 'Campinas'): 84,
             ('Andradas', 'Campinas'): 106,
