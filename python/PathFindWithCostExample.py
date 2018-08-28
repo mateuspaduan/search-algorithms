@@ -82,10 +82,7 @@ class FindPath(object):
     def ObjectiveTest(self, current, target):
         """Return ``True`` if ``current`` state corresponds to the ``target`` state 
         """
-        solution = False
-        if current == target:
-            solution = True
-        return solution
+        return current == target
 
     def ExpandSolution(self, current):
         """Returns all possible states from ``current`` 
