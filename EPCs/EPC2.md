@@ -71,4 +71,7 @@ ObjectiveTest("Atibaia", "Campinas") -> False
 ObjectiveTest("Campinas", "Campinas") -> True
 ```
 
-5. a) 
+5. a) A função `Heuristic` receberá como parâmetros: `current = "Pouso Alegre"`  e `target = "Campinas"`. Ao dar um `.get()` no dicionário `custo_linha_reta` com esses parâmetros, receberá `137`, que é a distância em linha reta entre Pouso Alegre e Campinas, e o valor que será retornado pela função.
+
+b) PathFindingWithCostExample.py: `Pouso Alegre -> Cambuí -> Camanducaia -> Bragança Paulista -> Atibaia -> Campinas`\
+PathFindingExample.py: `S. R. Sapucaí -> Pouso Alegre -> Borda da Mata -> Jacutinga -> Itapira -> Campinas`

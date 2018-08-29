@@ -102,17 +102,26 @@ if __name__ == '__main__':
         'Ipuiúna', 'Bragança Paulista', 'Jacutinga', 'Andradas', 'Atibaia', 'Itapira',
         'Esp. Santo Pinhal', 'Mogi-Guaçu', 'Mogi Mirim', 'Campinas']
 
-    edges = [('S. R. Sapucaí', 'Pouso Alegre'), 
-
-            ('Pouso Alegre', 'Cambuí'), ('Cambuí', 'Camanducaia'), ('Camanducaia', 'Bragança Paulista'),
-            ('Bragança Paulista', 'Atibaia'), ('Atibaia', 'Campinas'),
-
-            ('Pouso Alegre', 'Borda da Mata'), ('Borda da Mata', 'Jacutinga'), ('Jacutinga', 'Itapira'),
-            ('Itapira', 'Campinas'),
-
-            ('Pouso Alegre', 'Congonhal'), ('Congonhal', 'Ipuiúna'), ('Ipuiúna', 'Andradas'), ('Andradas', 'Esp. Santo Pinhal'),
-            ('Esp. Santo Pinhal', 'Mogi-Guaçu'), ('Mogi-Guaçu', 'Mogi Mirim'), ('Mogi Mirim', 'Campinas'),
-        ]
+    edges = [
+        ('S. R. Sapucaí',     'Pouso Alegre'),      ('Pouso Alegre',      'S. R. Sapucaí'),
+        ('Pouso Alegre',      'Cambuí'),            ('Cambuí',            'Pouso Alegre'),
+        ('Cambuí',            'Camanducaia'),       ('Camanducaia',       'Cambuí'),
+        ('Camanducaia',       'Bragança Paulista'), ('Bragança Paulista', 'Camanducaia'),
+        ('Bragança Paulista', 'Atibaia'),           ('Atibaia',           'Bragança Paulista'),
+        ('Bragança Paulista', 'Itapira'),           ('Itapira',           'Bragança Paulista'),
+        ('Atibaia',           'Campinas'),          ('Campinas',          'Atibaia'),
+        ('Pouso Alegre',      'Borda da Mata'),     ('Borda da Mata',     'Pouso Alegre'),
+        ('Borda da Mata',     'Jacutinga'),         ('Jacutinga',         'Borda da Mata'),
+        ('Jacutinga',         'Itapira'),           ('Itapira',           'Jacutinga'),
+        ('Itapira',           'Campinas'),          ('Campinas',          'Itapira'),
+        ('Pouso Alegre',      'Congonhal'),         ('Congonhal',         'Pouso Alegre'),
+        ('Congonhal',         'Ipuiúna'),           ('Ipuiúna',           'Congonhal'),
+        ('Ipuiúna',           'Andradas'),          ('Andradas',          'Ipuiúna'),
+        ('Andradas',          'Esp. Santo Pinhal'), ('Esp. Santo Pinhal', 'Andradas'),
+        ('Esp. Santo Pinhal', 'Mogi-Guaçu'),        ('Mogi-Guaçu',        'Esp. Santo Pinhal'),
+        ('Mogi-Guaçu',        'Mogi Mirim'),        ('Mogi Mirim',        'Mogi-Guaçu'),
+        ('Mogi Mirim',        'Campinas'),          ('Campinas',          'Mogi Mirim'),
+    ]
   
     G=nx.DiGraph()
     

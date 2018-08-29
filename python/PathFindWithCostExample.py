@@ -179,7 +179,7 @@ if __name__ == '__main__':
     # Creating an object for breadth first search algorithm for ``FindPath`` problem
     SearchObj = greedy_search(Problema)
 
-    start = 'S. R. Sapucaí'
+    start = 'Pouso Alegre'
     target = 'Campinas'
     print('\nSearching %s starting from %s...' % (target, start))
     solution, path, path_edges = SearchObj.search(start, target)
