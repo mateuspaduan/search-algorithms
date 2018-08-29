@@ -50,7 +50,7 @@ class greedy_search(object):
     
     
     def search(self,start,target):
-        #start a empty queue
+        #start an empty queue
         frontier = PriorityQueue()
         #insert ``start`` state in the queue
         frontier.put(start,0)
@@ -69,7 +69,7 @@ class greedy_search(object):
             #add to the visited states
             path.append(current)
               
-            #evaluate is this is the objective
+            #evaluate if this is the objective
             if self.problem.ObjectiveTest(current,target) == True:
                 #if true, finish search
                 solution = True
@@ -84,7 +84,7 @@ class greedy_search(object):
                 #check if each expanded solution was already visited
                 if next_item not in came_from:
                     #if not, evaluate the associated heuristic
-                    priority = self.problem.Heuristic(target,next_item)
+                    priority = self.problem.Heuristic(target,next_item,current)
 #                     print(priority)
                     # and add to the priority queue for evaluation
                     frontier.put(next_item,priority)

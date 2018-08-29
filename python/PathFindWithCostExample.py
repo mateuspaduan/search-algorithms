@@ -89,7 +89,7 @@ class FindPath(object):
         """
         return self.problem.neighbors(current)
 
-    def Heuristic(self, target, current):
+    def Heuristic(self, target, current, previous):
         """Returns heuristic associated to ``current`` 
         """
         custo_linha_reta = {
@@ -111,9 +111,10 @@ class FindPath(object):
             ('Campinas', 'Campinas'): 0,
         }
 
-        Heuristic = custo_linha_reta.get((current, target))
-        print(Heuristic)
-        return Heuristic
+        heuristic = custo_linha_reta.get((current, target))
+        heuristic += cost.get((previous, current))
+        print(heuristic)
+        return heuristic
 
 
 if __name__ == '__main__':
