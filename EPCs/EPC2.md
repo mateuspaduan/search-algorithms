@@ -1,8 +1,8 @@
 ## EPC2 - Solution
 
-1) **Teste de objetivo** -> `FindPath.ObjectiveTest`: Retorna True se o estado atual é igual ao próximo\
-**Sucessor** -> `FindPath.ExpandSolution`: Retorna todos os possíveis estados sucessores do atual
-**Heurística** -> `FindPath.Heuristic`: Retorna a distância em linha reta entre a cidade atual e o destino.
+1) **Teste de objetivo** - `FindPath.ObjectiveTest`: Retorna True se o estado atual é igual ao próximo\
+**Sucessor** - `FindPath.ExpandSolution`: Retorna todos os possíveis estados sucessores do atual\
+**Heurística** - `FindPath.Heuristic`: Retorna a distância em linha reta entre a cidade atual e o destino.
 
 2)
 ```python
