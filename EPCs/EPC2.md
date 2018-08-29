@@ -14,7 +14,6 @@ custo_linha_reta = {
     ('Camanducaia', 'Campinas'): 97,
     ('Borda da Mata', 'Campinas'): 117,
     ('Bragança Paulista', 'Campinas'): 54,
-    ('Bragança Paulista', 'Itapira'): ,
     ('Ipuiúna', 'Campinas'): 139,
     ('Jacutinga', 'Campinas'): 84,
     ('Andradas', 'Campinas'): 106,
@@ -38,25 +37,38 @@ nodes = [
 ]
 
 edges = [
-    ('S. R. Sapucaí', 'Pouso Alegre'),
-    ('Pouso Alegre', 'Cambuí'),
-    ('Cambuí', 'Camanducaia'),
-    ('Camanducaia', 'Bragança Paulista'),
-    ('Bragança Paulista', 'Atibaia'),
-    ('Bragança Paulista', 'Itapira'),
-    ('Atibaia', 'Campinas'),
-    ('Pouso Alegre', 'Borda da Mata'),
-    ('Borda da Mata', 'Jacutinga'),
-    ('Jacutinga', 'Itapira'),
-    ('Itapira', 'Campinas'),
-    ('Pouso Alegre', 'Congonhal'),
-    ('Congonhal', 'Ipuiúna'),
-    ('Ipuiúna', 'Andradas'),
-    ('Andradas', 'Esp. Santo Pinhal'),
-    ('Esp. Santo Pinhal', 'Mogi-Guaçu'),
-    ('Mogi-Guaçu', 'Mogi Mirim'),
-    ('Mogi Mirim', 'Campinas'),
+    ('S. R. Sapucaí',     'Pouso Alegre'),      ('Pouso Alegre',      'S. R. Sapucaí'),
+    ('Pouso Alegre',      'Cambuí'),            ('Cambuí',            'Pouso Alegre'),
+    ('Cambuí',            'Camanducaia'),       ('Camanducaia',       'Cambuí'),
+    ('Camanducaia',       'Bragança Paulista'), ('Bragança Paulista', 'Camanducaia'),
+    ('Bragança Paulista', 'Atibaia'),           ('Atibaia',           'Bragança Paulista'),
+    ('Bragança Paulista', 'Itapira'),           ('Itapira',           'Bragança Paulista'),
+    ('Atibaia',           'Campinas'),          ('Campinas',          'Atibaia'),
+    ('Pouso Alegre',      'Borda da Mata'),     ('Borda da Mata',     'Pouso Alegre'),
+    ('Borda da Mata',     'Jacutinga'),         ('Jacutinga',         'Borda da Mata'),
+    ('Jacutinga',         'Itapira'),           ('Itapira',           'Jacutinga'),
+    ('Itapira',           'Campinas'),          ('Campinas',          'Itapira'),
+    ('Pouso Alegre',      'Congonhal'),         ('Congonhal',         'Pouso Alegre'),
+    ('Congonhal',         'Ipuiúna'),           ('Ipuiúna',           'Congonhal'),
+    ('Ipuiúna',           'Andradas'),          ('Andradas',          'Ipuiúna'),
+    ('Andradas',          'Esp. Santo Pinhal'), ('Esp. Santo Pinhal', 'Andradas'),
+    ('Esp. Santo Pinhal', 'Mogi-Guaçu'),        ('Mogi-Guaçu',        'Esp. Santo Pinhal'),
+    ('Mogi-Guaçu',        'Mogi Mirim'),        ('Mogi Mirim',        'Mogi-Guaçu'),
+    ('Mogi Mirim',        'Campinas'),          ('Campinas',          'Mogi Mirim'),
 ]
 ```
 
-4. a) A função `ObjectiveTest` 
+4. a) A função `ObjectiveTest` verifica se um estado representa o estado objetivo simplesmente comparando o atual com o objetivo.
+
+Exemplo:
+```python
+ObjectiveTest("Santa Rita", "Campinas") -> False
+ObjectiveTest("Pouso Alegre", "Campinas") -> False
+ObjectiveTest("Cambuí", "Campinas") -> False
+ObjectiveTest("Camanducaia", "Campinas") -> False
+ObjectiveTest("Bragança Paulista", "Campinas") -> False
+ObjectiveTest("Atibaia", "Campinas") -> False
+ObjectiveTest("Campinas", "Campinas") -> True
+```
+
+5. a) 
