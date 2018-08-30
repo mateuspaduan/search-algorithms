@@ -1,10 +1,10 @@
 ## EPC2 - Solution
 
-**1)** **Teste de objetivo** - `FindPath.ObjectiveTest`: Retorna True se o estado atual é igual ao próximo\
+1) **Teste de objetivo** - `FindPath.ObjectiveTest`: Retorna True se o estado atual é igual ao próximo\
 **Sucessor** - `FindPath.ExpandSolution`: Retorna todos os possíveis estados sucessores do atual\
 **Heurística** - `FindPath.Heuristic`: Retorna a distância em linha reta entre a cidade atual e o destino.
 
-**2)**
+2)
 ```python
 custo_linha_reta = {
     ('S. R. Sapucaí', 'Campinas'): 165,
@@ -26,7 +26,7 @@ custo_linha_reta = {
 }
 ```
 
-**3)**
+3)
 ```python
 nodes = [
     'S. R. Sapucaí', 'Pouso Alegre', 'Cambuí',
@@ -58,7 +58,7 @@ edges = [
 ]
 ```
 
-**4)** a) A função `ObjectiveTest` verifica se um estado representa o estado objetivo simplesmente comparando o atual com o objetivo.
+4) a) A função `ObjectiveTest` verifica se um estado representa o estado objetivo simplesmente comparando o atual com o objetivo.
 
 Exemplo:
 ```python
@@ -71,10 +71,11 @@ ObjectiveTest("Atibaia", "Campinas") -> False
 ObjectiveTest("Campinas", "Campinas") -> True
 ```
 
-**5)** a) A função `Heuristic` receberá como parâmetros: `current = "Pouso Alegre"`  e `target = "Campinas"`. Ao dar um `.get()` no dicionário `custo_linha_reta` com esses parâmetros, receberá `137`, que é a distância em linha reta entre Pouso Alegre e Campinas, e o valor que será retornado pela função.\
+5) a) A função `Heuristic` receberá como parâmetros: `current = "Pouso Alegre"`  e `target = "Campinas"`. Ao dar um `.get()` no dicionário `custo_linha_reta` com esses parâmetros, receberá `137`, que é a distância em linha reta entre Pouso Alegre e Campinas, e o valor que será retornado pela função.\
 b) PathFindingWithCostExample.py: `Pouso Alegre -> Cambuí -> Camanducaia -> Bragança Paulista -> Atibaia -> Campinas`\
 PathFindingExample.py: `S. R. Sapucaí -> Pouso Alegre -> Borda da Mata -> Jacutinga -> Itapira -> Campinas`
 
-**6)** Mudanças para adaptar o código para funcionar como um algoritmo A*: [commit diff](https://github.com/mugbug/search-algorithms/commit/b77932edf52ae54bd69afac9f78c1d8b9367f386)
+6) Mudanças para adaptar o código para funcionar como um algoritmo A*: [commit diff](https://github.com/mugbug/search-algorithms/commit/b77932edf52ae54bd69afac9f78c1d8b9367f386)
 
-**7)** 
+7) A*: Distância final entre Pouso Alegre e Campinas: 225.00km\
+Busca gulosa: 

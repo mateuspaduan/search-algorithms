@@ -180,6 +180,7 @@ if __name__ == '__main__':
     # Creating an object for breadth first search algorithm for ``FindPath`` problem
     SearchObj = greedy_search(Problema)
 
+    final_distance = 0
     start = 'Pouso Alegre'
     target = 'Campinas'
     print('\nSearching %s starting from %s...' % (target, start))
@@ -191,6 +192,9 @@ if __name__ == '__main__':
         for u, v in edges:
             if (u, v) not in path_edges:
                 G.remove_edge(u, v)
+                continue
+            final_distance += cost.get((u, v))
+        print('Distância final entre {0} e {1}: {2:.2f}km'.format(start, target, final_distance))
         plotGraph(G, 1, positions)
     else:
         print('Path not found!')
