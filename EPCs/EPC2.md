@@ -77,5 +77,5 @@ PathFindingExample.py: `S. R. Sapucaí -> Pouso Alegre -> Borda da Mata -> Jacut
 
 6) Mudanças para adaptar o código para funcionar como um algoritmo A*: [commit diff](https://github.com/mugbug/search-algorithms/commit/b77932edf52ae54bd69afac9f78c1d8b9367f386)
 
-7) A*: Distância final entre Pouso Alegre e Campinas: 225.00km\
-Busca gulosa: 
+7) **A*:** Distância final entre Pouso Alegre e Campinas: 225.00km\
+**Busca gulosa:** Distância final entre Pouso Alegre e Campinas: 225.00km
