@@ -93,76 +93,75 @@ class FindPath(object):
         """Returns heuristic associated to ``current`` 
         """
         custo_linha_reta = {
-            ('S. R. Sapucaí', 'Campinas'): 165,
+            ('S. R. Sapucai', 'Campinas'): 165,
             ('Pouso Alegre', 'Campinas'): 137,
-            ('Cambuí', 'Campinas'): 108,
+            ('Cambui', 'Campinas'): 108,
             ('Congonhal', 'Campinas'): 135,
             ('Camanducaia', 'Campinas'): 97,
             ('Borda da Mata', 'Campinas'): 117,
-            ('Bragança Paulista', 'Campinas'): 54,
-            ('Ipuiúna', 'Campinas'): 139,
+            ('Braganca Paulista', 'Campinas'): 54,
+            ('Ipuiuna', 'Campinas'): 139,
             ('Jacutinga', 'Campinas'): 84,
             ('Andradas', 'Campinas'): 106,
             ('Atibaia', 'Campinas'): 57,
             ('Itapira', 'Campinas'): 58,
             ('Esp. Santo Pinhal', 'Campinas'): 86,
-            ('Mogi-Guaçu', 'Campinas'): 62,
+            ('Mogi-Guacu', 'Campinas'): 62,
             ('Mogi Mirim', 'Campinas'): 54,
             ('Campinas', 'Campinas'): 0,
         }
 
-        heuristic = custo_linha_reta.get((current, target))
-        heuristic += cost.get((previous, current))
-        print(heuristic)
-        return heuristic
+        Heuristic = custo_linha_reta.get((current, target)) 
+        Heuristic += cost.get((previous, current))
+        print (Heuristic)
+        return Heuristic
 
 
 if __name__ == '__main__':
 
-    nodes = ['S. R. Sapucaí', 'Pouso Alegre', 'Cambuí', 'Congonhal', 'Camanducaia', 'Borda da Mata',
-             'Ipuiúna', 'Bragança Paulista', 'Jacutinga', 'Andradas', 'Atibaia', 'Itapira',
-             'Esp. Santo Pinhal', 'Mogi-Guaçu', 'Mogi Mirim', 'Campinas']
+    nodes = ['Pouso Alegre', 'S. R. Sapucai', 'Cambui', 'Camanducaia', 'Braganca Paulista', 'Atibaia', 'Itapira',
+             'Campinas', 'Borda da Mata', 'Jacutinga', 'Congonhal', 'Ipuiuna', 'Andradas', 'Esp. Santo Pinhal',
+             'Mogi-Guacu', 'Mogi Mirim', 'Campinas']
 
     edges = [
-        ('S. R. Sapucaí',     'Pouso Alegre'),      ('Pouso Alegre',      'S. R. Sapucaí'),
-        ('Pouso Alegre',      'Cambuí'),            ('Cambuí',            'Pouso Alegre'),
-        ('Cambuí',            'Camanducaia'),       ('Camanducaia',       'Cambuí'),
-        ('Camanducaia',       'Bragança Paulista'), ('Bragança Paulista', 'Camanducaia'),
-        ('Bragança Paulista', 'Atibaia'),           ('Atibaia',           'Bragança Paulista'),
-        ('Bragança Paulista', 'Itapira'),           ('Itapira',           'Bragança Paulista'),
-        ('Atibaia',           'Campinas'),          ('Campinas',          'Atibaia'),
-        ('Pouso Alegre',      'Borda da Mata'),     ('Borda da Mata',     'Pouso Alegre'),
-        ('Borda da Mata',     'Jacutinga'),         ('Jacutinga',         'Borda da Mata'),
-        ('Jacutinga',         'Itapira'),           ('Itapira',           'Jacutinga'),
-        ('Itapira',           'Campinas'),          ('Campinas',          'Itapira'),
-        ('Pouso Alegre',      'Congonhal'),         ('Congonhal',         'Pouso Alegre'),
-        ('Congonhal',         'Ipuiúna'),           ('Ipuiúna',           'Congonhal'),
-        ('Ipuiúna',           'Andradas'),          ('Andradas',          'Ipuiúna'),
-        ('Andradas',          'Esp. Santo Pinhal'), ('Esp. Santo Pinhal', 'Andradas'),
-        ('Esp. Santo Pinhal', 'Mogi-Guaçu'),        ('Mogi-Guaçu',        'Esp. Santo Pinhal'),
-        ('Mogi-Guaçu',        'Mogi Mirim'),        ('Mogi Mirim',        'Mogi-Guaçu'),
-        ('Mogi Mirim',        'Campinas'),          ('Campinas',          'Mogi Mirim'),
+        ('S. R. Sapucai', 'Pouso Alegre'),
+        ('Pouso Alegre', 'Cambui'),
+        ('Cambui', 'Camanducaia'),
+        ('Camanducaia', 'Braganca Paulista'),
+        ('Braganca Paulista', 'Atibaia'),
+        ('Atibaia', 'Campinas'),
+        ('Pouso Alegre', 'Borda da Mata'),
+        ('Borda da Mata', 'Jacutinga'),
+        ('Jacutinga', 'Itapira'),
+        ('Itapira', 'Campinas'),
+        ('Pouso Alegre', 'Congonhal'),
+        ('Congonhal', 'Ipuiuna'),
+        ('Ipuiuna', 'Andradas'),
+        ('Andradas', 'Esp. Santo Pinhal'),
+        ('Esp. Santo Pinhal', 'Mogi-Guacu'),
+        ('Mogi-Guacu', 'Mogi Mirim'),
+        ('Mogi Mirim', 'Campinas')
     ]
 
     cost = {
-        ('S. R. Sapucaí',     'Pouso Alegre'): 28.5,      ('Pouso Alegre',      'S. R. Sapucaí'): 28.5,
-        ('Pouso Alegre',      'Cambuí'): 49.1,            ('Cambuí',            'Pouso Alegre'): 49.1,
-        ('Cambuí',            'Camanducaia'): 24.7,       ('Camanducaia',       'Cambuí'): 24.7,
-        ('Camanducaia',       'Bragança Paulista'): 60.4, ('Bragança Paulista', 'Camanducaia'): 60.4,
-        ('Bragança Paulista', 'Atibaia'): 25.2,           ('Atibaia',           'Bragança Paulista'): 25.2,
-        ('Bragança Paulista', 'Itapira'): 82.4,           ('Itapira',           'Bragança Paulista'): 82.4,
-        ('Atibaia',           'Campinas'): 65.6,          ('Campinas',          'Atibaia'): 65.6,
-        ('Pouso Alegre',      'Borda da Mata'): 70.7,     ('Borda da Mata',     'Pouso Alegre'): 70.7,
-        ('Borda da Mata',     'Jacutinga'): 28.8,         ('Jacutinga',         'Borda da Mata'): 28.8,
-        ('Jacutinga',         'Itapira'): 57.6,           ('Itapira',           'Jacutinga'): 57.6,
-        ('Itapira',           'Campinas'): 33.2,          ('Campinas',          'Itapira'): 33.2,
-        ('Pouso Alegre',      'Congonhal'): 24.3,         ('Congonhal',         'Pouso Alegre'): 24.3,
-        ('Congonhal',         'Ipuiúna'): 24.6,           ('Ipuiúna',           'Congonhal'): 24.6,
-        ('Ipuiúna',           'Andradas'): 67.6,          ('Andradas',          'Ipuiúna'): 67.6,
-        ('Andradas',          'Esp. Santo Pinhal'): 28.4,  ('Esp. Santo Pinhal', 'Andradas'): 28.4,
-        ('Esp. Santo Pinhal', 'Mogi-Guaçu'): 35.7,        ('Mogi-Guaçu',        'Esp. Santo Pinhal'): 35.7,
-        ('Mogi-Guaçu',        'Mogi Mirim'): 25.0,        ('Mogi Mirim',        'Mogi-Guaçu'): 25.0,
-        ('Mogi Mirim',        'Campinas'): 60.1,          ('Campinas',          'Mogi Mirim'): 60.1,
+        ('S. R. Sapucai', 'Pouso Alegre'): 28.5,
+        ('Pouso Alegre', 'Cambui'): 49.1,
+        ('Cambui', 'Camanducaia'): 24.7,
+        ('Camanducaia', 'Braganca Paulista'): 60.4,
+        ('Braganca Paulista', 'Atibaia'): 25.2,
+        ('Braganca Paulista', 'Itapira'): 82.4,
+        ('Atibaia', 'Campinas'): 65.6,
+        ('Itapira', 'Campinas'): 70.7,
+        ('Pouso Alegre', 'Borda da Mata'): 28.8,
+        ('Borda da Mata', 'Jacutinga'): 57.6,
+        ('Jacutinga', 'Itapira'): 33.2,
+        ('Pouso Alegre', 'Congonhal'): 24.3,
+        ('Congonhal', 'Ipuiuna'): 24.6,
+        ('Ipuiuna', 'Andradas'): 67.6,
+        ('Andradas', 'Esp. Santo Pinhal'): 28.4,
+        ('Esp. Santo Pinhal', 'Mogi-Guacu'): 35.7,
+        ('Mogi-Guacu', 'Mogi Mirim'): 25.0,
+        ('Mogi Mirim', 'Campinas'): 60.1,
     }
 
     G = nx.DiGraph()
